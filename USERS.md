@@ -15,3 +15,4 @@ TEMPLATE:
 - https://musq.github.io — **Ashish Ranjan** (Software Engineer)
 - https://fazi1058.github.io **Faezeh Roeinfard** (Student)
 - https://www.gabrielacaesar.com/ - **Gabriela Caesar** (Data journalist)
+- https://tech.serhatteker.com **Serhat Teker** (Software Engineer)

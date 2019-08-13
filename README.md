@@ -138,6 +138,27 @@ Adding a cover image to your post is simple and there are two options when you e
 
 - **Archive** — Theme has built-in `archive` page for main content (see `contentTypeName` variable in config). If you need archive on your blog just copy https://github.com/panr/hugo-theme-hello-friend/blob/master/exampleSite/content/archive.md to your `content` dir. If you need multilangual archives, duplicate `content/archive.md` and add `.Lang` variable, eg: `content/archive.pl.md` (remember to change `url` in duplicated file).
 - **Comments** — for adding comments to your blog posts please take a look at `layouts/partials/comments.html` https://github.com/panr/hugo-theme-terminal/blob/master/layouts/partials/comments.html.
+- **Taxonomy** — Theme has built-in `taxonomy` pages uses `archive` style. Hugo has default `tags` and `categories` taxonomies which can be found in your site's `/tags` and `/categories` url. For adding `taxonomy` in your blog please add them in the `front matter` of your posts like below:
+
+  ```
+  ---
+  title: "Showcase"
+  date: "2019-01-18"
+  author: "Lorem Ipsum"
+  categories = ["intro", "lorem"]
+  tags = ["intro", "plugin"]
+  ---
+  ```
+
+  For easy access in navbar, e.g. for `tags`, you can add below settings in your `config` file:
+  ```yml
+  [[languages.en.menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags"
+  ```
+
+     For more info please visit [hugo taxonomy](https://gohugo.io/content-management/taxonomies/).
 - **Prepended `<head>`** — if you need to add something inside `<head>` element, and before any of the theme's `<script>` and `<link>` tags are declared, please take a look at `layouts/partial/prepended_head.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/prepended_head.html
 - **Extended `<head>`** — if you need to add something inside `<head>` element, after all of all of the theme's `<script>` and `<link>` tags are declared, please take a look at `layouts/partial/extended_head.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/extended_head.html
 - **Extended `<footer>`** — if you need to add something before end of `<body>` element, please take a look at `layouts/partial/extended_footer.html` https://github.com/panr/hugo-theme-hello-friend/blob/master/layouts/partials/extended_footer.html

@@ -1,0 +1,60 @@
+{{ define "main" }}
+
+<!-- lean version -->
+<!-- <div class="archive"> -->
+<!--   <h1>{{ .Title }}</h1> -->
+
+<!--   <ul> -->
+<!--     {{ range .Pages }} -->
+
+<!--     <div class="archive__post"> -->
+<!--       <h3 class="archive__post-title"> -->
+<!--         <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a> -->
+<!--       </h3> -->
+<!--     </div> -->
+<!--     {{ end }} -->
+<!--   </ul> -->
+<!-- </div> -->
+
+<div class="archive">
+  <h1>{{ .Title }}</h1>
+  {{ range .Pages.GroupByDate "2006" }}
+  {{ if ne .Key "0001" }}
+  <div class="archive__group-year">
+    <h2 class="archive__group-year-header">{{ replace .Key "0001" "" }}</h2>
+    {{ range .Pages.GroupByDate "January" }}
+    <div class="archive__group-month">
+      <h3 class="archive__group-month-header">{{ .Key }}</h3>
+      <div class="archive__group-posts">
+        {{ range .Pages }}
+        {{ if eq .Kind "page" }}
+        <div class="archive__post">
+          <h3 class="archive__post-title"><a
+              href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+          </h3>
+          <div class="archive__post-meta">
+            <span class="archive__post-date">
+              {{ .Date.Format ($.Site.Params.DateFormatList | default "2006-01-02") }}
+            </span>
+            {{ with .Params.Author }}
+            <span class="archive__post-author">—
+              {{ $.Site.Params.WrittenBy | default "Written by" }}
+              {{ . }}
+            </span>
+            {{ end }}
+            {{ if $.Site.Params.ShowReadingTime }}
+            <span class="archive__post-read-time">— {{ .ReadingTime }}
+              {{ $.Site.Params.MinuteReadingTime | default "min read" }}</span>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+  {{ end }}
+</div>
+{{ end }}
